@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;500;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/normalize.css">
+    <link rel="stylesheet" href="styles/reset.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <title>Compre fácil seus remédios</title>
+</head>
+<body>
+    <h1 class="title">Descubra a quantidade certa de remédios para a próxima compra!</h1>
+    <form class="campos" id="camposId" action="" method="GET">
+        <div class="campos__campoUser">
+            <label for="inputNome" class="campoLabel">Nome do medicamento</label>
+            <input type="text" id="inputNome" class="campoUser" placeholder="Insira o nome do medicamento">
+        </div>
+
+        <div class="campos__campoUser">
+            <label for="inputPeso" class="campoLabel">Dosagem</label>
+            <input type="text" id="inputPeso" class="campoUser" placeholder="Insira a miligrama usada">
+        </div>
+
+        <div class="campos__campoUser">
+            <label for="inputQuantidadeDia" class="campoLabel">Quantidade de comprimidos consumida em 1 dia</label>
+            <input type="text" id="inputQuantidadeDia" class="campoUser" onkeyup="inputMonitor(this.value)" placeholder="Insira a quantidade consumida por dia">
+        </div>
+
+        <div class="campos__campoUser">
+            <label for="inputQuantidadeCaixa" class="campoLabel">Quantidade de comprimidos dentro de 1 caixa</label>
+            <input type="number" id="inputQuantidadeCaixa" class="campoUser" onkeyup="inputMonitor(this.value)" placeholder="Insira a quantidade de comprimidos na caixa"/>
+        </div>
+        
+        <div class="campos__campoMachine">
+            <label for="outputQuantidadeDias" class="campoLabel">Quantos dias 1 caixa supre:</label>
+            <output id="outputQuantidadeDias" class="campoMachine"></output>
+        </div>
+
+        <div class="campos__campoUser">
+            <label for="inputQuantidadeMes" class="campoLabel">Em quantos dias você quer fazer a próxima compra?</label>
+            <input type="number" id="inputQuantidadeMes" class="campoUser" onkeyup="compraMonitor(this.value)" placeholder="Insira a quantidade de dias até a próxima compra">
+        </div>
+
+        <div class="campos__campoMachine">
+            <label for="outputQuantidadeCaixa" id="dias" class="campoLabel">Quantidade de caixas para a próxima compra:</label>
+            <output id="outputQuantidadeCaixa" class="campoMachine"></output>
+        </div>
+    </form>
+    <script type="text/javascript" src="scripts/script.js"></script>
+</body>
+</html>
