@@ -49,10 +49,6 @@ body {
 }
 
 @media screen and (max-width: 1024px) {
-    .title {
-        width: 50%;
-    }
-
     .campos__campoUser {
         width: 50%;
     }
@@ -63,10 +59,6 @@ body {
 }
 
 @media screen and (max-width: 627px) {
-    .title {
-        width: 80%;
-    }
-
     .campos__campoUser {
         width: 80%;
     }
@@ -79,7 +71,6 @@ body {
 @media screen and (max-width: 425px) {
     .title {
         font-size: 1.25rem;
-        width: 90%;
     }
 
     .campos__campoUser {
