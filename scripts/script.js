@@ -1,61 +1,96 @@
 'use strict'
-//Quantidade de dias que os remédios duram
-function userInput() {
-    let dias1 = document.getElementById('inputQuantidadeDia');
-    let dias2 = document.getElementById('inputQuantidadeCaixa');
-    let resultado = parseInt(dias2.value/dias1.value);
-    let modulo = dias2.value%dias1.value;
 
-    if(dias1.value == "" || dias2.value == "") {
-        resultado = "0";
-        modulo = "0";
+//Retorna a quantidade de dias que os remédios duram
+function medDays() {
+    let CPporDia = document.getElementById('inputCPporDia');
+    let CPcaixa = document.getElementById('input1Caixa');
+    let compra = document.getElementById('inputDiasComprar');
+
+    // resultado mostra quantos dias inteiros duram comprimidos contidos em uma caixa
+    // modulo mostra quantos comprimidos vão sobrar
+    let resultado = parseInt(CPcaixa.value/CPporDia.value);
+    let modulo = CPcaixa.value%CPporDia.value;
+
+    // Só imprime se campos preenchidos
+    let html = "";
+    switch(true) {
+        case (CPporDia.value == "" || CPcaixa.value == ""):
+            html = "";
+            break;
+        case (modulo == 0 && resultado == 1):
+            html = `${resultado} dia e não sobra comprimidos`;
+            break;
+        case (modulo > 0 && resultado == 1):
+            html = `${resultado} dia e sobra ${modulo} comprimidos`;
+            break;
+        case (modulo == 0):
+            html = html = `${resultado} dias e não sobra comprimidos`;
+            break;
+        default:
+            html = `${resultado} dias e sobra ${modulo} comprimidos`;
+            break;
     }
-    return `${resultado} dias e sobra ${modulo} comprimidos`;
+
+    return html;
 }
 
-//Atualiza tela com o valor
-function updateOutput(value) {
-    const output = document.getElementById('outputQuantidadeDias');
-    output.innerText = value;
-}
 
-//Atualiza a cada tecla digitada
-window.inputMonitor = (value) => updateOutput(userInput(value));
-
-
-
+// Função retorna quantas caixas precisa comprar pra durar x dias
 function proximaCompra() {
-    let dias1 = document.getElementById('inputQuantidadeDia');
-    let dias2 = document.getElementById('inputQuantidadeCaixa');
-    let compra = document.getElementById('inputQuantidadeMes'); 
+    let CPporDia = document.getElementById('inputCPporDia');
+    let CPcaixa = document.getElementById('input1Caixa');
+    let compra = document.getElementById('inputDiasComprar'); 
     
-    let resultado = dias2.value/dias1.value; 
-    let modulo = dias2.value%dias1.value;
-    let inteiroX = 1;
+    // Quantos dias dura uma caixa
+    let resultado = CPcaixa.value/CPporDia.value; //ex.: 30cps/2cpsDia = 15 dias
     
-    let resultadoCompra = Math.ceil(compra.value/resultado);
-    let conta1 = compra.value*dias1.value;
+    // Quantidade de caixas inteiras
+    let resultadoCompra = Math.ceil(compra.value/resultado); //ex.: 30dias / 15 = 2cxs
+
+    // Total de comprimidos consumidos
+    let consumo = compra.value*CPporDia.value; //ex.: 30*2cpsDia = 60 cps consumidos em 30 dias
     
-    while (inteiroX*dias2.value <= conta1) {
-        inteiroX++
+    // Total de comprimidos comprados
+    let comprados = CPcaixa.value*resultadoCompra; //ex.: 30cps*2cxs = 60cps comprados em 30 dias
+
+    let sobra = comprados-consumo;
+
+    let html = "";
+
+    switch(true) {
+        case (CPporDia.value == "" || CPcaixa.value == ""):
+            html = "";
+            break;
+        case (sobra == 0 && resultadoCompra == 1):
+            html = `${resultadoCompra} caixa e não sobrará comprimidos.`;
+            break;
+        case (sobra > 0 && resultadoCompra == 1):
+            html = `${resultadoCompra} caixa e sobrará ${sobra} comprimidos.`;
+            break;
+        case (sobra == 0):
+            html = `${resultadoCompra} caixas e não sobrará comprimidos.`;
+            break;
+        case (sobra > 15):
+            html = `${resultadoCompra} caixas e sobrará ${sobra} comprimidos.\n Parece que sobrarão muitos comprimidos, tente alterar o número de dias para próxima compra.`;
+            break;
+        default:
+            html = `${resultadoCompra} caixas e sobrará ${sobra} comprimidos.`;
     }
-    let conta2 = dias2.value*inteiroX;
-    let conta3 = conta2-conta1;
-    if(conta3 == dias2.value) {
-        return `${resultadoCompra} caixas e não sobrará comprimidos`;
-    } else {
-        return `${resultadoCompra} caixas e sobrará ${conta3} comprimidos`;
-    }
-      
+
+    /* if(CPporDia.value == "" || CPcaixa.value == "") {
+        html = "";
+    } */
+
+    return html;
 }
 
 //Atualiza tela com o valor
-function updateCompra(value) {
-    const output = document.getElementById('outputQuantidadeCaixa');
-    output.innerText = value;
+function updateOutput(value1, value2) {
+    const output1 = document.getElementById('output1CaixaDias');
+    const output2 = document.getElementById('outputQuantidadeCaixa');
+    output1.innerText = value1;
+    output2.innerText = value2;
 }
 
-//Atualiza a cada tecla digitada
-window.compraMonitor = (value) => updateCompra(proximaCompra(value));
-
-//Rever conta do quanto sobra de comprimidos...
+//Atualiza a janela
+window.inputMonitor = (value1, value2) => updateOutput(medDays(value1), proximaCompra(value2));
