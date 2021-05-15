@@ -3,89 +3,167 @@ body {
     font-family: 'Rubik', sans-serif;
 }
 
-.title {
+.header {
     background-color: #fdfdfd;
-    box-shadow: 1px 1px 10px rgba(2, 2, 2, 0.3);
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    box-shadow: 1px 1px 2px rgba(2, 2, 2, 0.2);
     color: #050505;
-    font-size: 1.7rem;
-    padding: 3rem;
-    text-align: center;
+    display: flex;
+    align-items: baseline;
+    padding: 4rem;
 }
 
-.campos__campoUser:first-child {
-    margin-top: 40px;
+.title {
+    border-right: 2px solid #050505;
+    font-size: 3rem;
+    font-weight: 500;
+    padding-right: 4rem;
+    text-align: right;
 }
 
-.campos__campoUser {
+.subtitle {
+    font-weight: 500;
+    padding-left: 4rem;
+}
+
+.form {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 40px 30px 0 30px;
+}
+
+.fieldUser {
     background-color: #fdfdfd;
     border-radius: 10px;
-    box-shadow: 1px 1px 10px rgba(2, 2, 2, 0.3);
+    box-shadow: 1px 1px 5px rgba(2, 2, 2, 0.3);
     display: flex;
     flex-direction: column;
-    margin: 20px auto;
+    margin: 1%;
     padding: 4rem 2rem;
-    width: 30%;
+    position: relative;
+    width: 23%;
 }
 
-.campos__campoMachine {
+.fieldMachine {
     background-color: #fdfdfd;
     border-radius: 10px;
-    box-shadow: 1px 1px 10px rgba(2, 2, 2, 0.3);
-    margin: 20px auto;
+    box-shadow: 1px 1px 5px rgba(2, 2, 2, 0.3);
+    margin: 1%;
     padding: 4rem 2rem;
-    text-align: center;
-    width: 30%;
+    position: relative;
+    width: 23%;
 }
 
-.campoLabel {
+.number {
+    color: #757575;
+    margin-bottom: 0;
+    position: absolute;
+    top: 0;
+}
+
+.label {
     margin-bottom: 5px;
-    text-align: center;
 }
 
-.campoUser {
+.input {
     font-size: 0.8rem;
     line-height: 1.5rem;
     padding: 0 0.5rem;
 }
 
 @media screen and (max-width: 1024px) {
-    .campos__campoUser {
-        width: 50%;
+    .header {
+        align-items: center;
     }
 
-    .campos__campoMachine {
-        width: 50%;
+    .fieldUser {
+        margin: 1.5%;
+        width: 30%;
+    }
+
+    .fieldMachine {
+        margin: 1.5%;
+        width: 30%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .header {
+        border-bottom-left-radius: 25px;
+        border-bottom-right-radius: 25px;
+    }
+    .title {
+        font-size: 2rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
+    .fieldUser {
+        margin: 2%;
+        width: 46%;
+    }
+
+    .fieldMachine {
+        margin: 2%;
+        width: 46%;
+    }
+
+    .input {
+        height: 2.5rem;
     }
 }
 
 @media screen and (max-width: 627px) {
-    .campos__campoUser {
+    .title {
+        font-size: 1.5rem;
+        padding-right: 2rem;
+    }
+
+    .subtitle {
+        font-size: 0.9rem;
+        padding-left: 2rem;
+    }
+
+    .form {
+        margin-left: 15px;
+        margin-right: 15px;
+        justify-content: center;
+    }
+
+    .fieldUser {
         width: 80%;
     }
 
-    .campos__campoMachine {
+    .fieldMachine {
         width: 80%;
     }
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 457px) {
+    .header {
+        padding-right: 1.25rem;
+        padding-left: 1.25rem;
+    }
     .title {
-        font-size: 1.25rem;
+        font-size: 1rem;
     }
 
-    .campos__campoUser {
-        width: 90%;
+    .subtitle {
+        font-size: 0.75rem;
     }
 
-    .campoLabel {
+    .fieldUser {
+        width: 100%;
+    }
+
+    .label {
         font-size: 0.9rem;
     }
 
-    .campoUser {
-        height: 2.5rem;
-    }
-
-    .campos__campoMachine {
-        width: 90%;
+    .fieldMachine {
+        width: 100%;
     }
 }
