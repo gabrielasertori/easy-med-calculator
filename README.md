@@ -2,7 +2,7 @@
 
 Você toma muitos remédios e eles acabam antes de completarem um mês? Ou não duram uma semana? Quer saber a melhor quantidade para comprar que dure exatamente o quanto precisa? Essa calculadora faz a conta pra você!
 
-# Licença
+# licença
 
 AtribuiçãoNãoComercial-CompartilhaIgual-CC BY-NC-SA
 
